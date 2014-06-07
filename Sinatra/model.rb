@@ -11,5 +11,11 @@ class User
   property :online, Boolean
 end
 
+class Game
+	include DataMapper::Resource
+	property :id, Serial
+	property :name, String
+end
+
 DataMapper.finalize
 DataMapper.auto_upgrade!

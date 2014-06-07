@@ -37,3 +37,13 @@ post '/sign_out' do
 	u.save
 	jsonp [u.online]
 end
+
+post '/new_game' do 
+	logger.info params.inspect
+	g = Game.create(name: params[:name])
+	jsonp g.to_json
+end
+
+get "/games" do 
+	jsonp Game.all.to_json
+end
