@@ -47,3 +47,7 @@ end
 get "/games" do 
 	jsonp Game.all.to_json
 end
+
+get "/game" do
+	jsonp Game.get(params[:id].to_i).to_json
+end
