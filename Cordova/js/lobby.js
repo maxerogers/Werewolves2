@@ -1,10 +1,10 @@
 $(function() {
 
 	$("#sign_out_btn").click(function(){
-		$.ajax({
-			url: "http://localhost:9393/sign_out",
-			type: "POST",
-			contentType: "application/json"
+		var x = JSON.parse( document.cookie );
+		$.post("http://localhost:9393/sign_out", x, function(response){
+			document.cookie = response;
+			window.location = "../index.html";
 		});
 	});	
 

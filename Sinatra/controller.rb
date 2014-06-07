@@ -32,4 +32,8 @@ end
 
 post '/sign_out' do 
 	logger.info params.inspect
+	u = User.last(username: params[:username])
+	u.online = false
+	u.save
+	jsonp [u.online]
 end
