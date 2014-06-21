@@ -1,21 +1,24 @@
-require 'data_mapper'
-require 'dm-sqlite-adapter'
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
-
-class User
-  include DataMapper::Resource  
-  property :id, Serial
-  property :username, String, length: 128
-  property :name, String
-  property :password, BCryptHash
-  property :online, Boolean
+require "sinatra"
+require "sinatra/activerecord"
+ 
+set :database, "sqlite3:blog.db"
+ 
+class User < ActiveRecord::Base
+	#email:String, password:String, password_confirmation:String, online:boolean
+	has_secure_password
+	validates_presence_of :password, :on => :create
+	has_many :players
+	has_many :games, through: :players
 end
 
-class Game
-	include DataMapper::Resource
-	property :id, Serial
-	property :name, String
+class Game < ActiveRecord::Base
+	#name:String, status:String
+	#status = [queuing , on, over]
+	has_many :players
+	has_many :users, through: :players
 end
 
-DataMapper.finalize
-DataMapper.auto_upgrade!
+class Player < ActiveRecord::Base
+	belongs_to :game
+	belongs_to :user
+end

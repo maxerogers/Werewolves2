@@ -4,14 +4,14 @@ get '/' do
 end
 
 get '/online_users' do 
-	jsonp User.all(online: true).to_json
+	jsonp User.where(online: true).to_json
 end	
 
 get '/login_user' do
 	logger.info params.inspect
-	u = User.last(:username => params[:email])
+	u = User.where(:email => params[:email]).last
 	return jsonp ["No Email Found"] if u.nil?
-	return jsonp ["Bad Password"] if u.password != params[:password]
+	return jsonp ["Bad Password"] unless u.authenticate(params[:password])
 	u.online = true
 	u.save
 	jsonp u.to_json
@@ -19,9 +19,9 @@ end
 
 get '/new_user' do
 	logger.info params.inspect
-	u = User.last(username: params[:email])
+	u = User.where(email: params[:email]).last
 	if u.nil?
-		u = User.create(username: params[:email], password: params[:password])
+		u = User.create(email: params[:email], password: params[:password])
 	else
 		return jsonp ["Email already registred"]
 	end
@@ -32,7 +32,7 @@ end
 
 post '/sign_out' do 
 	logger.info params.inspect
-	u = User.last(username: params[:username])
+	u = User.where(email: params[:email]).last
 	u.online = false
 	u.save
 	jsonp [u.online]
@@ -49,5 +49,5 @@ get "/games" do
 end
 
 get "/game" do
-	jsonp Game.get(params[:id].to_i).to_json
+	jsonp Game.find(params[:id].to_i).to_json
 end

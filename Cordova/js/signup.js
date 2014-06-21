@@ -19,6 +19,7 @@ $(function() {
 						document.cookie = response;
 					}else{
 						window.location = "../lobby.html";
+						document.cookie = response;
 					}
 				}
 			});

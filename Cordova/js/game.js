@@ -1,6 +1,7 @@
 $(function() {
 	//var id = GetURLParameter("id");
 	var json = {};
+	var obj = {};
 	json.id = GetURLParameter("id");
 	$.ajax({
 		url: "http://localhost:9393/game",
@@ -10,7 +11,20 @@ $(function() {
 		contentType: 'application/json',
 		accepts: "application/json",
 		success: function(response){ 
-			alert(response);
+			obj = JSON.parse(response);
+			$("#title").html(obj.name);
+		}
+	});
+
+	$.ajax({
+		url: "http://localhost:9393/game_players",
+		type: "GET",
+		dataType "jsonp",
+		data: json,
+		contentType: 'application/json',
+		accepts: 'application/json',
+		success: function(response){
+			obj = JSON.parse(response);
 		}
 	});
 

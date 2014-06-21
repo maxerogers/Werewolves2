@@ -14,7 +14,7 @@ $(function() {
 		var json = {}
 		json.name = $("#new_game_input").val();
 		$.post("http://localhost:9393/new_game", json , function(response){
-			alert(response);
+			location.reload();
 		});
 	});
 
@@ -30,9 +30,10 @@ $(function() {
 		contentType: 'application/json',
 		accepts: "application/json",
 		success: function(response){ 
+			console.log(response);
 			var users = jQuery.parseJSON(response);
 			users.forEach(function(user){
-				$("#players").append("<p>"+user.username+"</p>");
+				$("#players").append("<p>"+user.email+"</p>");
 			});
 		}
 	});
@@ -50,4 +51,27 @@ $(function() {
 			});
 		}
 	});
+
+	var $selector = $('#new_game_input');
+
+    // Prevent double-binding
+    // (only a potential issue if script is loaded through AJAX)
+    $(document.body).off('keyup', $selector);
+
+    // Bind to keyup events on the $selector.
+    $(document.body).on('keyup', $selector, function(event) {
+      if(event.keyCode == 13) { // 13 = Enter Key
+        if($("#new_game_input").val()){
+            $("#new_game_form").css("display","none");
+			$("#new_game_btn").css("display","inline");
+			var json = {}
+			json.name = $("#new_game_input").val();
+			$.post("http://localhost:9393/new_game", json , function(response){
+				location.reload();
+			});
+        }else{
+            alert("Please enter your email and password");
+        }
+      }
+    });
 });
