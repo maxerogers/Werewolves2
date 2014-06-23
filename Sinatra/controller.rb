@@ -51,3 +51,18 @@ end
 get "/game" do
 	jsonp Game.find(params[:id].to_i).to_json
 end
+
+get "/game_players" do
+	logger.info params.inspect
+	g = Game.find(params[:id])
+	users = []
+	g.players.each do |p|
+		users.push User.find(p.user_id)
+	end
+	jsonp users.to_json
+end
+
+post "/add_user_to_game" do
+	logger.info params.inspect
+	jsonp ["Successful"]
+end
