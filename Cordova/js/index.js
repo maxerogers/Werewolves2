@@ -1,4 +1,6 @@
 $(function() {
+    saveData("thunder","cats");
+    console.log(getData("thunder"));
     function signIn(){
         var json_builder = {};
         json_builder.email = $("#email_input").val();
@@ -24,7 +26,12 @@ $(function() {
         });
     }
 
-    $("#signin_btn").click(function(){
+    $("#sign_up_btn").click(function(){
+        window.location = "../signup.html";
+    });
+
+    $("#login_form").submit(function(event){
+        event.preventDefault();
         if($("#password_input").val() !== 0 && $("#email_input").val() !== 0){
             signIn();
         }else{

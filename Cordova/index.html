@@ -4,18 +4,25 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 		<title>Werewolves</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
 		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/pusher.min.js"></script>
+		<script src="js/mydata.js"></script>
 		<script src="js/index.js"></script>
 	</head>
 	<body>
-		<h1>Log In</h1>
-		<form>
-			<input type="email" placeholder="Email" id="email_input"/>
-			<input type="password" placeholder="Password" id="password_input" />
-		</form>
-		<button id="signin_btn"> Sign In</button>
-		<form action="signup.html" method="get">
-		<button>Sign Up</button>
-		</form>
+		<div class="centered">
+			<h1>Werewolves</h1>
+			<div class="row">
+			  <div class="col-lg-12">
+			  	<input type="text" class="form-control" placeholder="Email"  id="email_input" >
+			    <input type="password" class="form-control" placeholder="Password" id="password_input">
+			    <button class="btn btn-default btn-success btn-block" id="sign_btn" type="button">Sign in</button>
+				<button id="sign_up_btn" type="button" class="btn btn-primary btn-block">Sign up</button>
+			  </div><!-- /.col-lg-6 -->
+			</div><!-- /.row -->
+		</div>
 	</body>
 </html>

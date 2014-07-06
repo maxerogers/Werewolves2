@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
 	validates_presence_of :password, :on => :create
 	has_many :players
 	has_many :games, through: :players
+
+	def init
+		self.name ||= "unknown"
+	end
 end
 
 class Game < ActiveRecord::Base
@@ -27,4 +31,9 @@ class Player < ActiveRecord::Base
     def init
       self.role  ||= "unknown"
     end
+end
+
+class Message < ActiveRecord::Base
+	belongs_to :game
+	validates_presence_of :username, :data
 end

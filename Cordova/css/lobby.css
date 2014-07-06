@@ -1,0 +1,42 @@
+body{
+	margin: 0;
+    padding: 0;
+    text-align: auto; /* !!! */
+    background-size: cover;
+    background-image: url("/img/stardust.png");
+    background-image: url(http://www.bnp.org.uk/sites/default/files/images/bluemoon.jpg);
+}
+
+.centered{
+	color: white;
+	position: relative;
+	margin: 0 auto;
+    text-align: left;
+    width: 400px;
+    margin-top: 5em;
+
+}
+
+#games{
+  color: white;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+input, button{
+	border:0px;
+	margin-bottom: 1em !important;
+}
+
+* {
+  -webkit-border-radius: 0 !important;
+     -moz-border-radius: 0 !important;
+          border-radius: 0 !important;
+}
+
+@media screen and (max-width: 807px) {
+	/* Styles */
+	body{
+		background-size: auto;
+	}
+}

@@ -43,35 +43,44 @@ $(function() {
 	$("#join_btn").click(function(){
 		$("#leave_btn").css("display","inline");
 		$("#join_btn").css("display","none");
-		var cookie_json = JSON.parse(document.cookie);
-		addUserToGame(cookie_json.id);
+		addUserToGame(getData("id"));
 	});
 	$("#leave_btn").click(function(){
-		$("#join_btn").css("display","none");
-		$("#leave_btn").css("display","inline");
+		$("#join_btn").css("display","inline");
+		$("#leave_btn").css("display","none");
+		removeUserFromGame(getData("id"));
+	});
+
+	$("#chat_btn").click(function(){
+		var json = {};
+		json.game_id = GetURLParameter("id");
+		json.user_id = getData("id");
+		json.data = $("#chat_box").val();
+		$.post("http://localhost:9393/chat",json, function(data){
+			console.log(data);
+		});
+	});
+	var channel = pusher.subscribe('test_channel_'+GetURLParameter("id"));
+	channel.bind('my_event', function(data) {
+		console.log(data);
+		$("#chat_log").append("<p><strong>"+data.username+":</strong> "+data.message+"</p>");
 	});
 });
 
 function addUserToGame(id){
-	console.log(id);
 	var json = {};
 	json.id = GetURLParameter("id");
 	json.player_id = id;
 	$.post("http://localhost:9393/add_user_to_game", json , function(response){
-		console.log(response);
+		location.reload();
 	});
 }
 
-function GetURLParameter(sParam)
-{
-	var sPageURL = window.location.search.substring(1);
-	var sURLVariables = sPageURL.split('&');
-	for (var i = 0; i < sURLVariables.length; i++)
-	{
-		var sParameterName = sURLVariables[i].split('=');
-		if (sParameterName[0] == sParam)
-		{
-			return sParameterName[1];
-		}
-	}
+function removeUserFromGame(id){
+	var json = {};
+	json.id = GetURLParameter("id");
+	json.player_id = id;
+	$.post("http://localhost:9393/remove_user_to_game", json , function(response){
+		location.reload();
+	});
 }

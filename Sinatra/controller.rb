@@ -1,4 +1,6 @@
 require "sinatra/jsonp"
+
+Pusher.url = "http://8c0bcee100b50a1d7826:6e64b8424aee60e380dd@api.pusherapp.com/apps/79094"
 get '/' do
   "Hello World"
 end
@@ -62,7 +64,20 @@ get "/game_players" do
 	jsonp users.to_json
 end
 
+post "/remove_user_to_game" do
+	logger.info params.inspect
+	jsonp ["Successful"]
+end
+
 post "/add_user_to_game" do
 	logger.info params.inspect
 	jsonp ["Successful"]
+end
+
+post "/chat" do 
+	logger.info params.inspect
+	m = Message.create(username: User.find(params[:user_id]).name, game: Game.find(params[:game_id]), data: params[:data])
+	channel_str = 'test_channel_'+params[:game_id]
+	Pusher[channel_str].trigger('my_event',{ message: m.data, username: m.username})
+	channel_str
 end

@@ -5,6 +5,8 @@
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 		<title>Werewolves</title>
 		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/pusher.min.js"></script>
+		<script src="js/mydata.js"></script>
 		<script src="js/game.js"></script>
 	</head>
 	<body>
@@ -20,11 +22,11 @@
 			<p><strong>Kenny:</strong> Play all da games</p>
 		</div>
 		<form>
-			<textarea rows="4" cols="50" placeholder="Chat...">
+			<textarea id="chat_box" rows="4" cols="50" placeholder="Chat...">
 </textarea>
 
 		</form>
-		<button> Chat</button>
+		<button id="chat_btn"> Chat</button>
 		<div id="invite_form" style="display:none;" >
 			<input type="text" id="player_input"></input>
 			<button id="invite_form_btn">Submit</button>
