@@ -14,6 +14,7 @@ $(function() {
 					//TODO Save user information like API Key and UserID
 					//alert(response);
 					//Forward user to lobby
+					console.log("hello");
 					if(response[0] === "Email already registred"){
 						alert(response);
 						document.cookie = response;
