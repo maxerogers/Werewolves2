@@ -29,7 +29,7 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav navbar-right">
-		        <li><a style="color:white;" class="btn btn-primary btn-lg" role="button" href="#">My Profile</a></li>
+		        <li><a style="color:white;" class="btn btn-primary btn-lg" role="button" href="profile.html">My Profile</a></li>
 		        <li><a style="color:white;" id="sign_out_btn" class="btn btn-success btn-lg" role="button" href="#">Signout</a></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
@@ -38,37 +38,43 @@
 
 		<div class="row">
 		  <div class="col-sm-8">
-			<div id="games">
-				<div class="panel panel-default">
-				  <div class="panel-body">
-				    <h3>Games online:</h3>
-				
-				  </div>
-				</div>
-				
+			<div id="games">				
 				<div id="new_game_form" style="display:none;">
-					<input id="new_game_input" type="text"></input>
+					<input id="new_game_input" type="text" placeholder="Enter game name..."></input>
+					<select id="gametype_select">
+						<option value="werewolves">Werewolves</option>
+					</select>
 					<button id="new_game_form_btn">Submit</button>
 				</div>
-
-				<button class="btn btn-primary btn-block" id="new_game_btn">New Game</button>
+				<h3> Open Games:<button id="new_game_btn" class="btn btn-success"><span class="glyphicon glyphicon-plus"> </span> </button></h3>
+				<table class="table" id="game_list">
+					<thead>
+						<tr>
+							<td>Name</td>
+							<td>Open Positions</td>
+							<td>Game Type</td>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				<div class="loading_gif" id="games_loading_gif"><img src="img/ajax-loader.gif"></div>
 			</div>
 		  </div>
 		  <div class="col-sm-4">
+		  	<h3>Players online</h3>
 		  	<div id="players"> 
-			<h3>Players online</h3>
-		</div>
+		  		<div class="loading_gif" id="players_loading_gif"><img src="img/ajax-loader.gif"></div>
+		  	</div>
+			<h3> Lobby Chat </h3>
 			<div id="chat_log">
-				<h3> Lobby Chat </h3>
-				<p><strong>Max:</strong> howdy everyone </p>
-				<p><strong>Kenny:</strong> Play all da games</p>
+				<div class="loading_gif" id="chat_loading_gif"><img src="img/ajax-loader.gif"></div>
 			</div>
 			<form>
-				<textarea rows="4" cols="50" placeholder="Chat...">
-	</textarea>
+				<textarea id="chat_box" rows="4" cols="50" placeholder="Chat..."></textarea>
 
 			</form>
-			<button> Chat</button>
+			<button id="chat_btn"> Chat</button>
 		  </div>
 		</div>
 	</body>

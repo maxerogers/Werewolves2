@@ -6,6 +6,10 @@ function getData(input){
 	} else {
 	    // Web page
 	    var json = jQuery.parseJSON(document.cookie);
+	    if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) 
+		{
+		  return json[input.toLowerCase()];         
+		}
 		return json[input];
 	}
 }
@@ -44,7 +48,6 @@ function GetURLParameter(sParam)
 		}
 	}
 }
-
 // Enable pusher logging - don't include this in production
 Pusher.log = function(message) {
   if (window.console && window.console.log) {

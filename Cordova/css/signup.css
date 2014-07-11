@@ -3,8 +3,10 @@ body{
     padding: 0;
     text-align: auto; /* !!! */
     background-size: cover;
+    /*
     background-image: url("/img/stardust.png");
     background-image: url(http://www.bnp.org.uk/sites/default/files/images/bluemoon.jpg);
+  */
 }
 
 .centered{

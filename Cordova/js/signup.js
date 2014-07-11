@@ -3,6 +3,7 @@ $(function() {
 		var json_builder = {};
 			json_builder.email = $("#email_input").val();
 			json_builder.password = $("#password_input").val();
+			json_builder.username = $("#username_input").val();
 			$.ajax({
 				url: "http://localhost:9393/new_user",
 				type: "GET",

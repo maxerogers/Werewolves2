@@ -5,11 +5,12 @@
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 		<title>Werewolves</title>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/werewolves.css">
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/pusher.min.js"></script>
 		<script src="js/mydata.js"></script>
-		<script src="js/game.js"></script>
+		<script src="js/werewolves.js"></script>
 	</head>
 	<body>
 
@@ -35,26 +36,40 @@
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>
-		<h1 id="title">Game</h1>
-		<h2 id="status">Status:</h2>
-		<button id="join_btn">Join Game</button>
-		<button id="leave_btn">Leave Game</button>
-		<h2> Players: </h2>
-		<div id="players"> 
+		<p> You are a Villager </p>
+		<p> Day Time </p>
+		<p> Click on another user to accuse them</p>
+		<!-- Button trigger modal -->
+		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+		  Roles
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Roles</h4>
+		      </div>
+		      <div class="modal-body">
+		        <ul>
+		        	<li>Sheriff</li>
+		        	<li>Psychic</li>
+		        	<li>Doctor</li>
+		        	<li>Alpha</li>
+		        	<li>Werewolf</li>
+		        	<li>Serial Killer</li>
+		        	<li>Bus Driver</li>
+		        	<li>Mayor</li>
+		        </ul>	
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default btn-lg btn-block" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
 		</div>
-		<h2> Chat: </h2>
-		<div id="chat_log">
-			<p><strong>Max:</strong> howdy everyone </p>
-			<p><strong>Kenny:</strong> Play all da games</p>
 		</div>
-		<form>
-			<textarea id="chat_box" rows="4" cols="50" placeholder="Chat..."></textarea>
-		</form>
-		<button id="chat_btn"> Chat</button>
-		<div id="invite_form" style="display:none;" >
-			<input type="text" id="player_input"></input>
-			<button id="invite_form_btn">Submit</button>
-		</div>
-		<button id="invite_btn">Invite Player</button>
 	</body>
 </html>

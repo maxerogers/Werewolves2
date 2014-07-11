@@ -1,6 +1,4 @@
 $(function() {
-    saveData("thunder","cats");
-    console.log(getData("thunder"));
     function signIn(){
         var json_builder = {};
         json_builder.email = $("#email_input").val();

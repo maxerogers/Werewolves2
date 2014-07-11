@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<title>Werewolves</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/werewolves.css">
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/pusher.min.js"></script>
+		<script src="js/mydata.js"></script>
+		<script src="js/werewolves.js"></script>
+	</head>
+	<body>
+
+		<nav class="navbar navbar-default navbar-static-top" role="navigation">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="#">Werewolves</a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a style="color:white;" class="btn btn-primary btn-lg" role="button" href="profile.html">My Profile</a></li>
+		        <li><a style="color:white;" id="sign_out_btn" class="btn btn-success btn-lg" role="button" href="#">Signout</a></li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+		<h2 style="text-align:center;"> Day Time </h2>
+		<h3 style="text-align:center;"> 00:15 until Night</h3>
+		<div class="row" style="margin-bottom:1em;">
+			<div class="col-xs-6">
+				<button class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#myModal">
+				  Chat
+				</button>
+			</div>
+			<div class="col-xs-6">
+				<!-- Button trigger modal -->
+				<button class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#myModal">
+				  Roles
+				</button>
+			</div>
+		</div>
+		
+		
+
+		<div class="panel-group" id="accordion">
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+		          You are a Villager
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseOne" class="panel-collapse collapse in">
+		      <div class="panel-body">
+		         as a Villager you may once board up your house. This will protect you from a werewolf attack. However, you will need to cut through these boards the following day so you may only do this once. Choose wisely 
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<p> Click on another user to accuse them</p>
+		<button class="btn btn-block btn-primary">Max <span class="badge">3/12</span> <span class="glyphicon glyphicon-ok"></span></button>
+		<button class="btn btn-block btn-primary">Eve</button>
+		<button class="btn btn-block btn-primary">Kenny</button>
+		<button class="btn btn-block btn-primary">Laurel</button>
+		<button class="btn btn-block btn-primary">Sarah</button>
+		<button class="btn btn-block btn-primary">John</button>
+		<button class="btn btn-block btn-primary">Jillian</button>
+		<button class="btn btn-block btn-primary">Robert</button>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Roles</h4>
+		      </div>
+		      <div class="modal-body">
+		        <ul>
+		        	<li>Sheriff</li>
+		        	<li>Psychic</li>
+		        	<li>Doctor</li>
+		        	<li>Alpha</li>
+		        	<li>Werewolf</li>
+		        	<li>Serial Killer</li>
+		        	<li>Bus Driver</li>
+		        	<li>Mayor</li>
+		        </ul>	
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default btn-lg btn-block" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		</div>
+	</body>
+</html>
