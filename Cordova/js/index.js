@@ -1,5 +1,6 @@
 $(function() {
     function signIn(){
+        console.log("rwar");
         var json_builder = {};
         json_builder.email = $("#email_input").val();
         json_builder.password = $("#password_input").val();
@@ -23,6 +24,10 @@ $(function() {
             }
         });
     }
+
+    $("#sign_in_btn").click(function(){
+        signIn();
+    });
 
     $("#sign_up_btn").click(function(){
         window.location = "../signup.html";
